@@ -11,13 +11,22 @@ module.exports = {
       from_username: {
         type: Sequelize.STRING,
         allowNull: false,
+        references: {
+          model: "user",
+          key: "username",
+        },
       },
       to_username: {
         type: Sequelize.STRING,
         allowNull: false,
+        references: {
+          model: "user",
+          key: "username",
+        },
       },
       content: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       date_time: {
         type: Sequelize.NOW,

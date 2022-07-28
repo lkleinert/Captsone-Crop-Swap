@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +15,17 @@
     "sequelize": "^6.21.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
-  }
+    "nodemon": "^2.0.19",
+    "sequelize-cli": "^6.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lkleinert/Captsone-Crop-Swap.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/lkleinert/Captsone-Crop-Swap/issues"
+  },
+  "homepage": "https://github.com/lkleinert/Captsone-Crop-Swap#readme",
+  "description": ""
 }
