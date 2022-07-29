@@ -13,12 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       from_username: { type: DataTypes.STRING, allowNull: false },
       to_username: { type: DataTypes.STRING, allowNull: false },
       content: { type: DataTypes.STRING, allowNull: false },
-      date_time: { type: DataTypes.NOW, allowNull: false },
+      date_time: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+        allowNull: false,
+      },
     },
     {
       sequelize,
       modelName: "Message",
-      freezeTableName: true,
+      tableName: "Message",
     }
   );
   return Message;

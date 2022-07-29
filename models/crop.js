@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Crop",
-      freezeTableName: true,
+      tableName: "Crop",
     }
   );
   return Crop;
