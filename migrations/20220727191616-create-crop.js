@@ -10,15 +10,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      available: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
+      growing: { type: Sequelize.STRING },
       quantity: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      username_id: {
+      usernameId: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {

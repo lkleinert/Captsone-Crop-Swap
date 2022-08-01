@@ -10,9 +10,10 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
-      name: { type: DataTypes.STRING, allowNull: false },
+      available: { type: DataTypes.STRING },
+      growing: { type: DataTypes.STRING },
       quantity: { type: DataTypes.STRING, allowNull: false },
-      username_id: { type: DataTypes.STRING, allowNull: false },
+      usernameId: { type: DataTypes.STRING, allowNull: false },
     },
     {
       sequelize,

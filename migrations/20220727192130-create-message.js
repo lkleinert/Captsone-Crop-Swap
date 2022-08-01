@@ -11,7 +11,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      from_username: {
+      fromUsername: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
@@ -19,7 +19,7 @@ module.exports = {
           key: "username",
         },
       },
-      to_username: {
+      toUsername: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
@@ -31,10 +31,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      date_time: {
+      dateTime: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,

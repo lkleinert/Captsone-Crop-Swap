@@ -10,13 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
-      from_username: { type: DataTypes.STRING, allowNull: false },
-      to_username: { type: DataTypes.STRING, allowNull: false },
+      fromUsername: { type: DataTypes.STRING, allowNull: false },
+      toUsername: { type: DataTypes.STRING, allowNull: false },
       content: { type: DataTypes.STRING, allowNull: false },
-      date_time: {
+      dateTime: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
-        allowNull: false,
       },
     },
     {
