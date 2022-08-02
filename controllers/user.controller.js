@@ -38,8 +38,11 @@ exports.createUser = async (req, res) => {
 //get one user
 exports.getUser = async (req, res) => {
   const { username } = req.params;
+  //log statement of username
   const user = await User.findOne({
-    where: username,
+    where: {
+      username,
+    },
   });
   if (!user) {
     return res
