@@ -15,6 +15,9 @@ app.use(cors());
 app.use(express.json());
 
 const userRouter = require("./routes/users");
+const cropRouter = require("./routes/crops");
+
+userRouter.use("/:username/crops", cropRouter);
 app.use("/users", userRouter);
 
 app.use((req, res) => {

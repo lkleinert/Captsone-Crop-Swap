@@ -5,11 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "make-model" : "npx sequelize-cli model:generate --name User --attributes email:string",
+    "make-model": "npx sequelize-cli model:generate --name User --attributes email:string",
     "migrate": "npx sequelize-cli db:migrate",
     "down": "npx sequelize-cli db:migrate: undo",
     "make-seed": "npx sequelize-cli seed:generate --name demo-user"
-
   },
   "author": "",
   "license": "ISC",
