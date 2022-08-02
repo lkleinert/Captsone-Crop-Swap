@@ -10,6 +10,27 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        available: "peaches",
+        quantity: "2",
+        usernameId: "Kat123",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        available: "apples",
+        quantity: "dozen",
+        usernameId: "BadWhoodle",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        available: "cucumbers",
+        quantity: "dozen",
+        usernameId: "Morfiend",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
