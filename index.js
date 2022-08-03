@@ -1,18 +1,21 @@
 "use strict";
 //import env variables
 require("dotenv/config");
-//do we need morgan, helmet, path, or fs imported?
+//do we need helmet, path, or fs imported?
 
 const express = require("express");
 //make instance of app
 const app = express();
 //initiate cors
 const cors = require("cors");
+//to log in our server console
+const morgan = require("morgan");
 //connecting sequelize?
 
-//middleware (morgan or helmet needed?)
+//middleware (helmet needed?)
 app.use(cors());
 app.use(express.json());
+app.use(morgan("combined"));
 
 const userRouter = require("./routes/users");
 const cropRouter = require("./routes/crops");
