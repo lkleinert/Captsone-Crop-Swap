@@ -13,7 +13,7 @@ const Crop = db.Crop;
 //would want some error handling on front end if no results found in query
 exports.getUsers = async (req, res) => {
   const { zipcode } = req.query;
-  console.log(zipcode);
+  // console.log(zipcode);
   const { crop } = req.query;
   if (!zipcode && !crop) {
     const users = await User.findAll();
@@ -49,12 +49,10 @@ exports.getUsers = async (req, res) => {
       // console.log(crop);
       usersWithCrops.push(crop["User"]);
     }
-    console.log(usersWithCrops);
     const usersWithZipsAndCrops = usersWithCrops.filter(
       (userWithCrops) =>
         zipcode.indexOf(userWithCrops.zipcode.toString()) !== -1
     );
-    // console.log(usersWithZipsAndCrops);
     return res.send(usersWithZipsAndCrops);
   }
 };
