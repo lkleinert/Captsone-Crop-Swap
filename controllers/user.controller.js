@@ -3,17 +3,10 @@ const db = require("../models");
 const User = db.User;
 const Crop = db.Crop;
 
-//GET ALL users
-// exports.getUsers = async (req, res) => {
-//   const users = await User.findAll();
-//   return res.send(users);
-// };
-
 //GET ALL users -> filter by crops, filter by zipcode, filter by crops AND zipcode
 //would want some error handling on front end if no results found in query
 exports.getUsers = async (req, res) => {
   const { zipcode } = req.query;
-  // console.log(zipcode);
   const { crop } = req.query;
   if (!zipcode && !crop) {
     const users = await User.findAll();
@@ -46,7 +39,6 @@ exports.getUsers = async (req, res) => {
     });
     const usersWithCrops = [];
     for (const crop of crops) {
-      // console.log(crop);
       usersWithCrops.push(crop["User"]);
     }
     const usersWithZipsAndCrops = usersWithCrops.filter(
@@ -60,7 +52,6 @@ exports.getUsers = async (req, res) => {
 //GET ONE user
 exports.getUser = async (req, res) => {
   const { username } = req.params;
-  //log statement of username
   const user = await User.findOne({
     where: {
       username,
@@ -77,7 +68,6 @@ exports.getUser = async (req, res) => {
 //CREATE ONE user
 exports.createUser = async (req, res) => {
   const { firstName, lastName, username, password, zipcode } = req.body;
-  // console.log(username);
   if (!firstName || !lastName || !username || !password || !zipcode) {
     return res.status(400).send({
       message:
@@ -150,7 +140,6 @@ exports.updateUser = async (req, res) => {
 //DELETE ONE user
 exports.deleteUser = async (req, res) => {
   const { username } = req.params;
-  //log statement of username
   const user = await User.findOne({
     where: {
       username,

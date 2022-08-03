@@ -23,31 +23,3 @@ module.exports = {
     dialect: "postgres",
   },
 };
-
-// module.exports = {
-//   development: {
-//     databases: {
-//       crop_swap_development: {
-//         database: process.env.POSTGRES_DB,
-//         username: process.env.POSTGRES_USER,
-//         password: null,
-//         host: process.env.POSTGRES_HOST,
-//         port: process.env.POSTGRES_PORT,
-//         dialect: "postgres",
-//       },
-//     },
-//     dialect: "postgres",
-//   },
-//   production: {
-//     databases: {
-//       crop_swap_development: {
-//         database: process.env.POSTGRES_DB,
-//         username: process.env.POSTGRES_USER,
-//         password: null,
-//         host: process.env.POSTGRES_HOST,
-//         port: process.env.POSTGRES_PORT,
-//         dialect: "postgres",
-//       },
-//     },
-//   },
-// };
