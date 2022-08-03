@@ -1,6 +1,6 @@
 "use strict";
 //import env variables
-require("dotenv/config");
+// require("dotenv/config");
 //do we need helmet, path, or fs imported?
 
 const express = require("express");
@@ -29,6 +29,10 @@ app.use((req, res) => {
   res.status(404).send("404: Page not found");
 });
 
-app.listen(process.env.EX_APP_PORT, () => {
-  console.log(`server has started on port ${process.env.EX_APP_PORT}`);
+// app.listen(process.env.EX_APP_PORT, () => {
+//   console.log(`server has started on port ${process.env.EX_APP_PORT}`);
+// });
+
+app.listen(3000, () => {
+  console.log("server has started on port 3000");
 });
