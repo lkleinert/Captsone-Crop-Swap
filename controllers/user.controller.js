@@ -9,43 +9,41 @@ exports.getUsers = async (req, res) => {
   const { zipcode } = req.query;
   const { crop } = req.query;
   if (!zipcode && !crop) {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      include: Crop,
+    });
     return res.send(users);
   } else if (zipcode && !crop) {
     const users = await User.findAll({
       where: {
         zipcode,
       },
+      include: Crop,
     });
     return res.send(users);
   } else if (!zipcode && crop) {
-    const crops = await Crop.findAll({
-      where: {
-        available: crop,
+    const users = await User.findAll({
+      include: {
+        model: Crop,
+        where: {
+          available: crop,
+        },
       },
-      include: User,
     });
-    const usersWithCrops = [];
-    for (const crop of crops) {
-      usersWithCrops.push(crop["User"]);
-    }
-    return res.send(usersWithCrops);
+    return res.send(users);
   } else if (zipcode && crop) {
-    const crops = await Crop.findAll({
+    const users = await User.findAll({
       where: {
-        available: crop,
+        zipcode: zipcode,
       },
-      include: User,
+      include: {
+        model: Crop,
+        where: {
+          available: crop,
+        },
+      },
     });
-    const usersWithCrops = [];
-    for (const crop of crops) {
-      usersWithCrops.push(crop["User"]);
-    }
-    const usersWithZipsAndCrops = usersWithCrops.filter(
-      (userWithCrops) =>
-        zipcode.indexOf(userWithCrops.zipcode.toString()) !== -1
-    );
-    return res.send(usersWithZipsAndCrops);
+    return res.send(users);
   }
 };
 
