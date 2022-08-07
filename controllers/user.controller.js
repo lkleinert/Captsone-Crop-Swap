@@ -2,6 +2,7 @@ const { response } = require("express");
 const db = require("../models");
 const User = db.User;
 const Crop = db.Crop;
+const bcrypt = require("bcrypt");
 
 //GET ALL users -> filter by crops, filter by zipcode, filter by crops AND zipcode
 //would want some error handling on front end if no results found in query
@@ -80,12 +81,13 @@ exports.createUser = async (req, res) => {
       message: `Username ${username} already exists. Please select another username`,
     });
   }
+  const hash = bcrypt.hashSync(password, 10);
   try {
     const newUser = await User.create({
       firstName,
       lastName,
       username,
-      password,
+      password: hash,
       zipcode,
     });
     return res.send(newUser);

@@ -20,10 +20,12 @@ app.use(morgan("combined"));
 const userRouter = require("./routes/users");
 const cropRouter = require("./routes/crops");
 const messageRouter = require("./routes/messages");
+const loginRouter = require("./routes/login");
 
 userRouter.use("/:username/crops", cropRouter);
 userRouter.use("/:username/messages", messageRouter);
 app.use("/users", userRouter);
+app.use("", loginRouter);
 
 app.use((req, res) => {
   res.status(404).send("404: Page not found");
