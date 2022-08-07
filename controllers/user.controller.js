@@ -3,6 +3,7 @@ const db = require("../models");
 const User = db.User;
 const Crop = db.Crop;
 const bcrypt = require("bcrypt");
+const { jwtGenerator } = require("../utils/jwtGenerator");
 
 //GET ALL users -> filter by crops, filter by zipcode, filter by crops AND zipcode
 //would want some error handling on front end if no results found in query
@@ -90,7 +91,9 @@ exports.createUser = async (req, res) => {
       password: hash,
       zipcode,
     });
-    return res.send(newUser);
+    //provide token
+    const token = jwtGenerator(username);
+    return res.send({ user: newUser, token: token });
   } catch (err) {
     return res.status(500).send({
       message: `Error ${err.message}`,
