@@ -32,7 +32,7 @@ exports.loginUser = async (req, res) => {
 
 exports.authUser = (req, res) => {
   try {
-    res.send(true);
+    res.send({ valid: true, user: req.user });
   } catch (err) {
     res.status(500).send("Server Error");
   }
