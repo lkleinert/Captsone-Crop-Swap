@@ -27,18 +27,12 @@ exports.loginUser = async (req, res) => {
   //provide token
   const token = jwtGenerator(username);
 
-  res.send({ token: token, zipcode: user.zipcode });
+  res.send(token);
 };
 
-exports.authUser = async (req, res) => {
+exports.authUser = (req, res) => {
   try {
-    const userZip = await User.findOne({
-      attributes: ["zipcode"],
-      where: {
-        username: req.user,
-      },
-    });
-    res.send({ valid: true, user: req.user, zipcode: userZip });
+    res.send({ valid: true, user: req.user });
   } catch (err) {
     res.status(500).send("Server Error");
   }
