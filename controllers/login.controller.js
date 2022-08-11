@@ -30,12 +30,12 @@ exports.loginUser = async (req, res) => {
   res.send({ token: token, zipcode: user.zipcode });
 };
 
-exports.authUser = (req, res) => {
+exports.authUser = async (req, res) => {
   try {
     const userZip = await User.findOne({
-      attributes: [ 'zipcode'],
+      attributes: ["zipcode"],
       where: {
-        username: req.user
+        username: req.user,
       },
     });
     res.send({ valid: true, user: req.user, zipcode: userZip });
