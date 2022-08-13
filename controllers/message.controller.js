@@ -1,6 +1,7 @@
 const db = require("../models");
 const Message = db.Message;
 const { Op } = require("sequelize");
+const { Sequelize } = require("../models");
 
 exports.createMessage = async (req, res) => {
   const loggedInUser = req.query.authUser;
@@ -39,4 +40,31 @@ exports.getMessages = async (req, res) => {
     order: [["id", "ASC"]],
   });
   return res.send(messages);
+};
+
+exports.getMessageThreads = async (req, res) => {
+  const loggedInUser = req.params.username;
+
+  const threads = await Message.findAll({
+    attributes: ["toUsername", "fromUsername"],
+    where: {
+      [Op.or]: [{ toUsername: loggedInUser }, { fromUsername: loggedInUser }],
+    },
+    group: ["toUsername", "fromUsername"],
+    raw: true,
+  });
+
+  const uniqueUsers = new Set();
+
+  for (const thread of threads) {
+    if (thread.toUsername !== loggedInUser) {
+      uniqueUsers.add(thread.toUsername);
+    }
+
+    if (thread.fromUsername !== loggedInUser) {
+      uniqueUsers.add(thread.fromUsername);
+    }
+  }
+
+  return res.send(Array.from(uniqueUsers));
 };
