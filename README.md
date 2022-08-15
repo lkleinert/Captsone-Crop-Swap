@@ -51,7 +51,7 @@ Capstone-Crop-Swap is a RESTful API built in Express/Node.js that uses the ORM S
 | `GET`  | `/users/username/messages` <br> required query params: `authUser = text`  | None  | Gets a list of messages between a user and an authorized/logged-in user (username in query params)|
 | `POST`  | `/users/username/messages` <br> required query params: authUser = loggedInUsername  | `{message: text}`  | Creates a message between a user and an authorized/logged-in user (username in query params)|
 | `POST`  | `/login` |  `{username: text, password: text}` | Logs an existing user in |
-| `POST`  | `/verified` <br>  required header: `token: jwt` | None | Check to see if user is already logged in |
+| `POST`  | `/verified` <br>  required header: `token: jwt` | None | Checks to see if user is already logged in |
 
 
 
