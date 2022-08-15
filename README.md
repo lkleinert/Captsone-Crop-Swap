@@ -1,4 +1,4 @@
-# Captsone-CropSwap
+# Introduction
 
 Capstone-CropSwap is a RESTful API built in Express/Node.js that uses Sequelize as its ORM and Posgtres as its database manager. This app is integrated with [CropSwap](https://github.com/lkleinert/Capstone-Crop-Swap-Frontend), which is a front-end ReactJS web application that allows users to search for, post about, and send messages regarding excess backyard garden produce. Capstone-Crop-Swap has been deployed to [Heroku](https://crop-swap-backend.herokuapp.com/users).
 
