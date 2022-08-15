@@ -38,12 +38,21 @@ Capstone-Crop-Swap is a RESTful API built in Express/Node.js that uses ORM Seque
 
 ## API Endpoints
 
-* /users -- methods: GET, POST.  Filter options for GET- query params- zip, crops
-* /users/:userId -- methods: GET, PATCH
-* /login
-* /verified
-* /users/userId/crops -- methods: GET, POST
-* /users/userId/crops -- methods: GET, POST
-* /users/userId/crops/cropID -- methods: PATCH, DELETE
-* /users/:userID/messages?authUser=currentUserId -- methods: POST message between two users, GET message thread between 2 users
+| Verb  | Path  | Body of Request | Action  |
+|---|---|---|---|
+| `GET`  | `/users` <br> optional query params: `zipcode: integer, crop: text` | None | Retrieves a list of users  |
+| `POST`  | `/users`  | `{firstName: text, lastName: text, userName: text, password: text, zipcode: integer}` <br> optional key: `bio: text`  | Posts a new user |
+| `GET`  | `/users/username`  | None | Retrieves a specific user |
+| `PATCH`  | `/users/username`  | `{attributeToPatch: value}` <br> attributes that can be patched include: password, firstName, lastName, bio | Updates data of an existing user |
+| `GET`  | `/users/username/crops`  | None | Retrieves a list of crops associated with a user  |
+| `POST`  | `/users/username/crops`  | `{available: text, quantity: text}` <br> optional key to be used if crop is growing vs. available: `growing: text` | Creates a crop associated with a user  |
+| `PATCH`  | `/users/username/crops/cropId` |`{available: text, quantity: text}` <br> optional key to be used if crop is growing vs. available: `growing: text` | Updates a crop associated with a user  |
+| `DELETE`  | `/users/username/crops/cropId` | None  | Deletes a crop associated with a user  |
+| `GET`  | `users/username/messages` <br> required query params: authUser = loggedInUsername  | None  | Gets a list of messages between 2 users |
+| `POST`  | `/users/username/messages` <br> required query params: authUser = loggedInUsername  | `{message: text}`  | Gets a list of messages between 2 users |
+| `GET`  | `/login` <br> |   |  |
+| `GET`  | `/verified` <br>  | | |
+
+
+
 
