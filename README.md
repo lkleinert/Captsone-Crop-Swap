@@ -50,8 +50,8 @@ Capstone-Crop-Swap is a RESTful API built in Express/Node.js that uses ORM Seque
 | `DELETE`  | `/users/username/crops/cropId` | None  | Deletes a crop associated with a user  |
 | `GET`  | `/users/username/messages` <br> required query params: `authUser = text`  | None  | Gets a list of messages between an authorized/logged-in user and another user |
 | `POST`  | `/users/username/messages` <br> required query params: authUser = loggedInUsername  | `{message: text}`  | Gets a list of messages between 2 users |
-| `GET`  | `/login` <br> |   |  |
-| `GET`  | `/verified` <br>  | | |
+| `POST`  | `/login` |  `{username: text, password: text}` | Logs an existing user in |
+| `POST`  | `/verified` <br>  required header: `token: jwt` | None | Check to see if user is already logged in |
 
 
 
